@@ -1,0 +1,29 @@
+:root {
+	--complement: rgb(215, 250, 255);
+	--main: rgb(22, 72, 11);
+}
+
+body {
+	display: flex;
+	justify-content: center;
+
+	font-family: sans-serif;
+	font-size: 18px;
+
+	width: 100vw;
+	min-height: 100vh;
+	
+	margin: 0;
+}
+
+.landing, .loading, .notfound, .login, .signup, .home {
+	display: flex;
+	align-items: center;
+	
+	height: 100%;
+}
+
+.login, .signup, .home {
+	flex-direction: column;
+	justify-content: center;
+}
