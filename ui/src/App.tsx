@@ -1,4 +1,3 @@
-import React from 'react'
 import Axios from "axios"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './styles/app.scss'

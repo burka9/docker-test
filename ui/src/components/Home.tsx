@@ -2,6 +2,7 @@ import React from 'react'
 import '../styles/home.scss'
 import { MyProp, MyUser, clearAccessToken, getAccessToken, validateSession } from '../lib'
 import Loading from './Loading'
+import { AxiosResponse } from 'axios'
 
 export default function Home({ axios }: MyProp) {
 	const [isLoading, setIsLoading] = React.useState(true)
@@ -26,7 +27,7 @@ export default function Home({ axios }: MyProp) {
 					throw new Error()
 				}
 			})
-			.then((response: any) => {
+			.then((response: AxiosResponse) => {
 				if (response.data.success) {
 					setUser(response.data.user)
 					setIsLoading(false)
