@@ -43,13 +43,19 @@ export default function Login({ axios }: MyProp) {
 		}
 	}
 
+	const onEnter = (e: React.KeyboardEvent<HTMLInputElement>): void => {
+		if (e.key === "Enter") {
+			login()
+		}
+	}
+
 	return isLoading ? <Loading /> : (
 		<div className="login">
 			<h1>Login</h1>
 
 			<div className="form">
-				<input type="text" placeholder='Username' onChange={e => setValueOnKeyDown(e.target.value, setUsername)} />
-				<input type="password" placeholder='Password' onChange={e => setValueOnKeyDown(e.target.value, setPassword)} />
+				<input onKeyDown={e => onEnter(e)} type="text" placeholder='Username' onChange={e => setValueOnKeyDown(e.target.value, setUsername)} />
+				<input onKeyDown={e => onEnter(e)} type="password" placeholder='Password' onChange={e => setValueOnKeyDown(e.target.value, setPassword)} />
 				<button disabled={loginLoading} onClick={login}>Login</button>
 				<hr />
 				<a href="#">Forgot Password?</a>

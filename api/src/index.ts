@@ -45,7 +45,7 @@ const server = createServer(app)
 
 
 const SERVER_CALLBACK = () => {
-	logger.info(`server started `)
+	logger.info(`server started on ${SERVER.PORT}`)
 	logger.debug(`listening on ${SERVER.HOST}:${SERVER.PORT}`)
 
 	routes.forEach(route => logger.info(`Route configured: ${route.name}`))
