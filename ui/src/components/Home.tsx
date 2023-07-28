@@ -1,10 +1,12 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import '../styles/home.scss'
 import { MyProp, MyUser, clearAccessToken, getAccessToken, validateSession } from '../lib'
 import Loading from './Loading'
 import { AxiosResponse } from 'axios'
 
 export default function Home({ axios }: MyProp) {
+	const navigate = useNavigate()
 	const [isLoading, setIsLoading] = React.useState(true)
 	const [user, setUser] = React.useState<MyUser>({
 		id: '',
@@ -38,7 +40,7 @@ export default function Home({ axios }: MyProp) {
 			.catch(err => {
 				console.error(err)
 				clearAccessToken()
-				window.location.href = "/"
+				navigate("/", { replace: true })
 			})
 	}, [])
 
@@ -52,7 +54,7 @@ export default function Home({ axios }: MyProp) {
 
 			if (data.success) {
 				clearAccessToken()
-				window.location.href = "/"
+				navigate("/", { replace: true })
 
 				return
 			}

@@ -1,9 +1,11 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import '../styles/login.scss'
 import { MyProp, clearAccessToken, getAccessToken, setAccessToken, setValueOnKeyDown, validateSession } from '../lib'
 import Loading from './Loading'
 
 export default function Login({ axios }: MyProp) {
+	const navigate = useNavigate()
 	const [isLoading, setIsLoading] = React.useState(true)
 	const [loginLoading, setLoginLoading] = React.useState(false)
 	const [username, setUsername] = React.useState("")
@@ -13,7 +15,7 @@ export default function Login({ axios }: MyProp) {
 		validateSession(axios)
 			.then(success => {
 				if (success) {
-					window.location.href = "/home"
+					navigate("/home", { replace: true })
 				} else {
 					setIsLoading(success)
 				}
@@ -32,7 +34,7 @@ export default function Login({ axios }: MyProp) {
 
 			if (data.success) {
 				setAccessToken(data['access_token'])
-				window.location.href = "/home"
+				navigate("/home", { replace: true })
 			} else {
 				throw new Error()
 			}

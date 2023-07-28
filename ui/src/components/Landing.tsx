@@ -1,17 +1,18 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import '../styles/landing.scss'
 import Loading from "./Loading"
 import { MyProp, validateSession } from "../lib"
 
 const Landing = ({ axios }: MyProp) => {
+	const navigate = useNavigate()
 	const [isLoading, setIsLoading] = React.useState(true)
 
 	React.useEffect(() => {
 		validateSession(axios)
 			.then(success => {
 				if (success) {
-					window.location.href = "/home"
+					navigate("/home", { replace: true })
 				} else {
 					setIsLoading(success)
 				}
